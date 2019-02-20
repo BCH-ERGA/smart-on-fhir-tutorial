@@ -104,87 +104,22 @@
         }
       );
     </script>
-   <div id="myDossier"></div>
+   <div id="dossierContainer"></div>
 
 <script type="text/javascript">
 
-  var BASE_URL = "http://biwebmsdev1:8080/MicroStrategyLibrary";
 
-  var projectId = "A1B808F24F203703FA994E80889058BA";
+var placeholderDiv = document.getElementById("dossierContainer");
 
-  var dossierId = "9A53B9D94BC363DC4D3453AB286DAE57";
+microstrategy.dossier.create({
 
-  function login() {
+  placeholder: placeholderDiv,
 
-    var options = {
+  url: http://biwebmsdev1:8080/MicrostrategyLibrary/app/A1B808F24F203703FA994E80889058BA/9A53B9D94BC363DC4D3453AB286DAE57
 
-      method: 'POST',
+});
 
-      credentials: 'include', // Including cookie
-
-      mode: 'cors', // Setting as cors mode for cross origin
-
-      headers: {'Content-Type': 'application/json'},
-
-      body: JSON.stringify({
-
-        loginMode: 8 // Login as guest user.
-
-      })
-
-    };
-
-    return fetch(BASE_URL + '/api/auth/login', options)
-
-    .then(function (response) {
-
-      if (response.ok) {
-
-        return response.headers.get('x-mstr-authToken');
-
-      } else {
-
-        response.json().then(function(json) {
-
-          console.log(json);
-
-        });
-
-      }
-
-    }).catch(function (error) {
-
-      console.log(error);
-
-    });
-
-  }
-
-  function showDossier() {
-
-    var placeHolderDiv = document.getElementById("myDossier");
-
-    var dossierUrl = BASE_URL +'/app/'+ projectId + '/' + dossierId;
-
-    microstrategy.dossier.create({
-
-      placeholder: placeHolderDiv,
-
-      url: dossierUrl,
-
-      enableCustomAuthentication: true,
-
-      enableResponsive: true,
-
-      customAuthenticationType: microstrategy.dossier.CustomAuthenticationType.AUTH_TOKEN,
-
-      getLoginToken: login
-
-    });
-
-  }
-
-</script> 
+    </script>
     
     
   </body>
