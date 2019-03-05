@@ -1,0 +1,47 @@
+
+
+<!DOCTYPE html>
+
+<html lang="en">
+
+  <head>
+
+    <meta charset="UTF-8">
+
+    <title></title>
+
+    <script type="text/javascript" src="http://localhost:8080/MicroStrategyLibrary/javascript/embeddinglib.js"></script>
+
+  </head>
+
+  <body onload="load()">
+
+    <div id="mydossier" height="100%" width="100%"></div>
+
+    <script type="text/javascript">
+
+      var myDossier;
+
+      function load() {
+
+        var container = document.getElementById("mydossier"),
+
+          url = "http://BIWEBMSTSTN1.CHBOSTON.ORG:8080/MicroStrategyLibrary/app/A1B808F24F203703FA994E80889058BA/24CB9CDC45FA6A25B8406E9FAE8377FA";
+
+        microstrategy.dossier.create({
+
+          url: url,
+
+          enableResponsive: true,
+
+          placeholder: container
+
+        })
+
+      };
+
+    </script>
+
+  </body>
+
+</html>
